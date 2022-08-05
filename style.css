@@ -28,6 +28,7 @@ body {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 72px repeat(5, 64px);
     gap: 8px;
+    box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.3);
 }
 
 .screen {
@@ -41,6 +42,7 @@ body {
     justify-content: flex-end;
     padding: 8px;
     font-size: 40px;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
 .button {
@@ -50,6 +52,8 @@ body {
     font-size: 32px;
     border-radius: 8px;
     cursor: pointer;
+    border: none;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
 .equalBtn {
@@ -68,4 +72,16 @@ body {
 
 .actionBtn {
     background-color: var(--orange);
+}
+
+.numberBtn:hover {
+    background-color: #d2d389;
+}
+
+.operationBtn:hover {
+    background-color: #95C215;
+}
+
+.actionBtn:hover {
+    background-color: #CA6E18;
 }
