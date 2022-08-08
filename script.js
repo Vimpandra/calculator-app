@@ -107,7 +107,10 @@ function operate() {
         result = percent(Number(firstValue), Number(displayScreen));
     }
     firstValue = ``;
-    displayScreen = `${result.toFixed(6)}`;
+    displayScreen = `${result}`;
+    if (displayScreen.length > 13) {
+        displayScreen = displayScreen.substr(0, 13);
+    }
     screen.textContent = displayScreen;
 };
 
