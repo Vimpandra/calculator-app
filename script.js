@@ -30,8 +30,10 @@ let operation = ``;
 
 numbers.forEach(number => {
     number.addEventListener(`click`, () => {
-        displayScreen += number.value;
-        screen.textContent = displayScreen;
+        if (displayScreen.length < 13) {
+            displayScreen += number.value;
+            screen.textContent = displayScreen;
+        }
     });
 });
 
@@ -105,7 +107,7 @@ function operate() {
         result = percent(Number(firstValue), Number(displayScreen));
     }
     firstValue = ``;
-    displayScreen = `${result}`;
+    displayScreen = `${result.toFixed(6)}`;
     screen.textContent = displayScreen;
 };
 
