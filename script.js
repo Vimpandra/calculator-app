@@ -114,7 +114,7 @@ window.addEventListener(`keydown`, (e) => {
         equalsBtn.click();
         kbAnimation(equalsBtn);
     }
-    if (e.key === `.`) {
+    if (e.key === `.` || e.key === `,`) {
         printPoint();
         kbAnimation(point);
     }
