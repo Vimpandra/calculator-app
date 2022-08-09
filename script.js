@@ -30,9 +30,10 @@ let operation = ``;
 
 numbers.forEach(number => {
     number.addEventListener(`click`, () => {
-        if (displayScreen.length < 13) {
+        if (displayScreen.length >= 30) return;
+        else {
             displayScreen += number.value;
-            screen.textContent = displayScreen;
+            updateScreen(displayScreen);
         }
     });
 });
@@ -57,7 +58,7 @@ ac.addEventListener(`click`, () => {
 
 backspace.addEventListener(`click`, () => {
     displayScreen = displayScreen.substr(0, displayScreen.length - 1);
-    screen.textContent = displayScreen;
+    updateScreen(displayScreen);
 })
 
 addBtn.addEventListener(`click`, () => {
@@ -108,10 +109,7 @@ function operate() {
     }
     firstValue = ``;
     displayScreen = `${result}`;
-    if (displayScreen.length > 13) {
-        displayScreen = displayScreen.substr(0, 13);
-    }
-    screen.textContent = displayScreen;
+    updateScreen(displayScreen);
 };
 
 function executeOperation() {
@@ -136,4 +134,13 @@ function divide(a, b) {
 };
 function percent(a, b) {
     return (b / 100) * a;
-}
+};
+
+function updateScreen(str) {
+    if (str.length > 10) {
+        screen.innerHTML = `${str.slice(0, 10)}<br>${str.slice(10, 20)}<br>${str.slice(20, 30)}`;
+   }
+  else {
+        screen.textContent = `${str}`;
+ }
+};
