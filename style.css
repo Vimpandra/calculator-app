@@ -90,3 +90,11 @@ body {
 .actionBtn:active {
     background-color: var(--btnDarkActive);
 }
+
+.actionKeyPress {
+    background-color: var(--btnDarkActive);
+}
+
+.numberKeyPress {
+    background-color: var(--btnLightActive);
+}

@@ -10,7 +10,7 @@ const n7 = document.getElementById(`n7`);
 const n8 = document.getElementById(`n8`);
 const n9 = document.getElementById(`n9`);
 const n0 = document.getElementById(`n0`);
-let numbers = [n1, n2, n3, n4, n5, n6, n7, n8, n9, n0];
+let numbers = [n0, n1, n2, n3, n4, n5, n6, n7, n8, n9];
 
 const point = document.getElementById(`point`);
 
@@ -83,43 +83,62 @@ equalsBtn.addEventListener(`click`, () => {
 window.addEventListener(`keydown`, (e) => {
     if (e.key >= 0 && e.key <= 9) {
         printNumber(e.key);
+        kbAnimation(numbers[e.key]);
     }
     if (e.key === `+`) {
         executeOperation();
         operation = `add`;
+        kbAnimation(addBtn)
     }
     if (e.key === `-`) {
         executeOperation();
         operation = `subtract`;
+        kbAnimation(subtractBtn);
     }
     if (e.key === `*`) {
         executeOperation();
         operation = `multiply`;
+        kbAnimation(multiplyBtn);
     }
     if (e.key === `/`) {
         executeOperation();
         operation = `divide`;
+        kbAnimation(divideBtn);
     }
     if (e.key === `%`) {
         executeOperation();
         operation = `percent`;
+        kbAnimation(percentBtn);
     }
     if (e.key === `Enter` || e.key === `=`) {
-        if (firstValue !== ``) {
-            operate();
-        }
+        equalsBtn.click();
+        kbAnimation(equalsBtn);
     }
     if (e.key === `.`) {
         printPoint();
+        kbAnimation(point);
     }
     if (e.key === `Backspace`) {
-        screenContent = screenContent.substr(0, screenContent.length - 1);
-        updateScreen(screenContent);
+        backspace.click();
+        kbAnimation(backspace);
     }
     if (e.key === `Escape` || e.key === `Delete`) {
         clearAll();
+        kbAnimation(ac);
     }
 });
+
+window.addEventListener(`keyup`, () => {
+    let activeButtons = Array.from(document.querySelectorAll(`.actionKeyPress`));
+    activeButtons.forEach(button => {
+        button.classList.remove(`actionKeyPress`);
+    });
+    let numberButtons = Array.from(document.querySelectorAll(`.numberKeyPress`));
+    numberButtons.forEach(button => {
+        button.classList.remove(`numberKeyPress`);
+    });
+})
+
 
 // Basic Functions
 
@@ -199,3 +218,20 @@ function updateScreen(str) {
         screen.textContent = `${str}`;
  }
 };
+
+function kbAnimation(btn) {
+    if (
+        btn === backspace ||
+        btn === ac ||
+        btn === percentBtn ||
+        btn === divideBtn ||
+        btn === multiplyBtn ||
+        btn === subtractBtn ||
+        btn === addBtn ||
+        btn === equalsBtn
+    ) {
+        btn.classList.add(`actionKeyPress`);    
+    } else {
+        btn.classList.add(`numberKeyPress`);
+    }
+}
