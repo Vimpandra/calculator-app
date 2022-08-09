@@ -92,6 +92,18 @@ equalsBtn.addEventListener(`click`, () => {
     }
 });
 
+// Keyboard Shortcuts
+
+window.addEventListener(`keydown`, (e) => {
+    if (e.key === `1`) {
+        if (displayScreen.length >= 30) return;
+        else {
+            displayScreen += number.value;
+            updateScreen(displayScreen);
+        }
+    }
+})
+
 // Basic Functions
 
 function operate() {
